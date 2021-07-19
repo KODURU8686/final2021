@@ -1,0 +1,144 @@
+{% extends 'htfiles/header.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+{% if messages %}
+  {% for j in messages %}
+  <div class="alert alert-{{j.tags}} alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  {{j}}
+</div>
+  {% endfor %}
+{% endif %}
+
+<style type="text/css">
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    
+    background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+
+.card {
+    margin-bottom: 150px;
+    border: none
+}
+
+.box input[type=""]:focus,
+.box input[type="Email"]:focus,
+.box input[type="password"]:focus {
+    width: 300px;
+    border-color: #FFCCFF
+}
+.box {
+    width: 450px;
+    padding: 28px;
+    position: absolute;
+    top: 30%;
+    left: 60%;
+    background:#191919 ;
+    background-color: rgba(0,0,0,0.5) !important;
+    text-align: center;
+    transition: 0.25s;
+    margin-top: 50px
+}
+
+.box input[type="text"],
+.box input[type="password"],
+.box input[type="Email"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 10px 10px;
+    width: 250px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s
+}
+
+.box h3 {
+    color: # white;
+    text-transform: uppercase;
+    font-weight: 600
+}
+
+
+
+.box input[type="submit"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 30px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 10px 10px;
+    width: 150px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s
+}
+
+
+.box input[type="submit"]:hover {
+    background: #2ecc71;
+}
+.ex:hover{
+  background:#skyblue;
+}
+.ex{
+  border: 0;
+    background: none;
+    display: block;
+    margin: 30px auto;
+    text-align: center;
+    border: 1px solid #3498db;
+    padding: 10px 10px;
+    width: 150px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s
+
+}
+
+</style>
+
+<div class="container rounded">
+    <div class="row rounded">
+        <div class="col-md-6">
+            <div class="card rounded">
+              <form method="POST" class="box rounded">
+                {% csrf_token %}
+                <!-- {{form.as_p}} -->
+                 <h3 class="text-white">Registration</h3>
+				<!-- {{u.as_p}} -->
+				{% csrf_token %} 
+				<table class="table table-borderless">
+					{% for k in t %}
+					<tr>
+						<td>{{k}}</td>
+					</tr>
+					{% endfor %}
+				</table>
+				<div class="row">
+						<div class="col">
+							<a href="{% url 'lg' %}" class="ex form-control col-sm btn btn-info">Existing User</a>
+						</div>
+
+							<input type="submit" class="form-control btn btn-success col-sm-4" name="subscribe">
+						
+					</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
